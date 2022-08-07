@@ -4,57 +4,60 @@ function getComputerChoice() {
     return possibleWords[Math.floor(Math.random() * possibleWords.length)];;
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
 
-
-    playerSelection = prompt("Choose your hand:").toLowerCase();
-    computerSelection = getComputerChoice();
-
-    if((playerSelection === 'rock' && computerSelection === 'rock') || (playerSelection === 'paper' && computerSelection === "paper") || (playerSelection === "scissors" && computerSelection === "scissors")) {
-        isDraw = true;
-    } else if((playerSelection === 'rock' && computerSelection === 'paper') || (playerSelection === 'paper' && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock")) {
-        isComputer = true;
-    } else if((playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === "paper") || (playerSelection === "rock" && computerSelection === "scissors")) {
-        isPlayer = true;
-    } else {
-        alert("No such hand! Try again!");
-        return playRound();
-    }
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            playerSelection = button.id;
+            computerSelection = getComputerChoice();
+        });
+    });
+    
+    if (
+        (playerSelection === 'rock' && computerSelection === 'rock') ||
+        (playerSelection === 'paper' && computerSelection === "paper") ||
+        (playerSelection === "scissors" && computerSelection === "scissors")
+    ) {
+        
+        result = "Round is a draw!"
+        
+    } else if (
+        (playerSelection === 'rock' && computerSelection === 'paper') ||
+        (playerSelection === 'paper' && computerSelection === "scissors") ||
+        (playerSelection === "scissors" && computerSelection === "rock")
+    ) {
+        compWinCount++
+        result = "You won this round!"
+    } else if (
+        (playerSelection === 'paper' && computerSelection === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection === "paper") ||
+        (playerSelection === "rock" && computerSelection === "scissors")
+    ) {
+        playerWinCount++;
+        result = "Computer winds this round"
+    } 
 
 }
 
 
 function game() {
-
-    for(let i = 0; i < 5; i ++) {
-        playRound();
-
-        if(isComputer) {
-            compWinCount++;
-        } else if(isPlayer) {
-            playerWinCount++;
-        } else {
-            alert("No winner in this round")
-        }
-    }
-
-    if(compWinCount === playerWinCount) {
-        alert("It's a draw!");
-    } else if(compWinCount > playerWinCount) {
-        alert("You lose!");
-    } else {
-        alert("You win!");
+    playRound();
+    if(playerWinCount === 5 && compWinCount < playerWinCount) {
+        result = "Congratz, you WIN the mage!"
+    } else if(compWinCount === 5 && playerWinCount < compWinCount) {
+        result = "You lose the game!"
     }
 
 }
 
 
-
+const buttons = document.querySelectorAll('button');
 let isPlayer = false;
 let isComputer = false;
 let isDraw = false;
 let compWinCount = 0;
 let playerWinCount = 0;
+let result = "";
 
 
 
