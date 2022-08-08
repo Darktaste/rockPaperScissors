@@ -1,78 +1,86 @@
+const buttons = document.querySelectorAll('button');
+const div = document.querySelector('div');
+const rock = '🪨';
+const paper = '📜';
+const scissors = '✂';
+let compWinCount = 0;
+let playerWinCount = 0;
+let roundResult = "";
+let gameResult = "";
+
+
+// getting random computer choice
 function getComputerChoice() {
     const possibleWords = [rock, paper, scissors];
 
     return possibleWords[Math.floor(Math.random() * possibleWords.length)];;
 }
 
-function playRound(playerSelection, computerSelection) {
+// logic for the game
+function playGame(playerSelection) {
 
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             playerSelection = button.textContent;
             computerSelection = getComputerChoice();
-            console.log(playerSelection);
-            console.log(computerSelection);
 
             if (
                 (playerSelection === rock && computerSelection === rock) ||
                 (playerSelection === paper && computerSelection === paper) ||
                 (playerSelection === scissors && computerSelection === scissors)
             ) {
-                
-                result = "Round is a draw!";
-                console.log("Round is a draw!");
-                
+                roundResult = "Round is a draw!";
             } else if (
                 (playerSelection === rock && computerSelection === paper) ||
                 (playerSelection === paper && computerSelection === scissors) ||
                 (playerSelection === scissors && computerSelection === rock)
             ) {
+
                 compWinCount++
-                result = "You won this round!";
-                console.log("You won this round!");
-                alert('WIN');
+                roundResult = "Computer wins this round";
+
             } else if (
                 (playerSelection === paper && computerSelection === rock) ||
                 (playerSelection === scissors && computerSelection === paper) ||
                 (playerSelection === rock && computerSelection === scissors)
             ) {
+                
                 playerWinCount++;
-                result = "Computer winds this round";
-                console.log("Computer winds this round");
+                roundResult = "You won this round!";
             }
+
+            
+            throwResult(roundResult);
+            
+            if (playerWinCount === 5) {
+                gameResult = "Congratz, you WIN the game!";
+                alert(gameResult);
+                disableButtons();
+            } else if (compWinCount === 5) {
+                gameResult = "You lose the game!";
+                alert(gameResult);
+                disableButtons();
+            } 
         });
     });
 }
 
+//printing the round result into the page
+function throwResult(result) {
 
-function game() {
-    playRound();
-    if(playerWinCount === 5 && compWinCount < playerWinCount) {
-        result = "Congratz, you WIN the mage!";
-        
-    } else if(compWinCount === 5 && playerWinCount < compWinCount) {
-        result = "You lose the game!";
-    }
-}
-
-function throwResult(result){
-
-    const throwResult = document.querySelector('#result');
-    const pResult = document.createElement('p');
+    const pResult = document.getElementById('result');
     pResult.textContent = result;
-    throwResult.appendChild(pResult);
+
+    const pWins = document.getElementById('playerWins');
+    pWins.textContent = `Player wins: ${playerWinCount}`;
+
+    const cWins = document.getElementById('computerWins');
+    cWins.textContent = `Computer wins: ${compWinCount}`
 }
 
-const buttons = document.querySelectorAll('button');
-let isPlayer = false;
-let isComputer = false;
-let isDraw = false;
-let compWinCount = 0;
-let playerWinCount = 0;
-let result = "";
-const rock = '🪨';
-const paper = '📜';
-const scissors = '✂';
-
-
-
+//disabling the buttons 
+function disableButtons() {
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+}
