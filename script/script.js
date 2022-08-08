@@ -44,23 +44,28 @@ function playGame(playerSelection) {
                 (playerSelection === scissors && computerSelection === paper) ||
                 (playerSelection === rock && computerSelection === scissors)
             ) {
-                
+
                 playerWinCount++;
                 roundResult = "You won this round!";
             }
 
-            
+
             throwResult(roundResult);
-            
+
             if (playerWinCount === 5) {
-                gameResult = "Congratz, you WIN the game!";
-                alert(gameResult);
-                disableButtons();
+                if (confirm('You WON the game! Want to play again?') === true) {
+                    restartGame();
+                } else {
+                    disableButtons();
+                }
             } else if (compWinCount === 5) {
-                gameResult = "You lose the game!";
-                alert(gameResult);
                 disableButtons();
-            } 
+                if (confirm('You LOSE... Want to play again?') === true) {
+                    restartGame();
+                } else {
+                    disableButtons();
+                }
+            }
         });
     });
 }
@@ -83,4 +88,9 @@ function disableButtons() {
     buttons.forEach(button => {
         button.disabled = true;
     });
+}
+
+//reloading of page
+function restartGame() {
+    window.location.reload();
 }
