@@ -11,26 +11,34 @@
     <header>
         <h1>Rock, Paper, Scissors!</h1>
     </header>
+    <div class="container">
+        <div id="scoreboard">
+            <p id="playerWins">Player wins: 0</p>
 
-    <p>Make your choice:</p>
-    <div>
-        <button id="rock" class="playerButton">&#129704</button>
-        <button id="paper" class="playerButton">&#128220</button>
-        <button id="scissors" class="playerButton">&#9986</button>
+            <p id="computerWins">Computer wins: 0</p>
+        </div>
+        <div class="game-choioces">
+            <p>Make your choice:</p>
+            <p id="result"></p>
+            <div class="buttons">
+                <button id="rock" class="playerButton">&#129704</button>
+                <button id="paper" class="playerButton">&#128220</button>
+                <button id="scissors" class="playerButton">&#9986</button>
+            </div>
+        </div>
     </div>
-
-    <div id="scoreboard">
-        <p id="playerWins">Player wins: 0</p>
-        <p id="result"></p>
-        <p id="computerWins">Computer wins: 0</p>
-    </div>
-
     <div class="popup" id="popup">
         <img src="./img/check.png">
         <h2 class="popupResult"></h2>
         <button type="button" class="closeButton">Play again!</button>
     </div>
-
+    <footer>Copyright &copy;
+        <script>
+            document.write(new Date().getFullYear())
+        </script>
+        Vasil Lyubenov
+        </p>
+    </footer>
     <script src="../rockPaperScissors/script/script.js"></script>
     <script>
         playGame();

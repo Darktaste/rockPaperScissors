@@ -47,7 +47,7 @@ function playGame(playerSelection) {
             ) {
 
                 compWinCount++;
-                roundResult = "Computer wins this round";
+                roundResult = "Computer wins this round!";
 
             } else if (
                 (playerSelection === paper && computerSelection === rock) ||
