@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <link href="./style/syle.css" rel="stylesheet">
     <title>Rock Paper Scissors</title>
-
-
 </head>
 
 <body>
@@ -20,11 +18,19 @@
         <button id="paper" class="playerButton">&#128220</button>
         <button id="scissors" class="playerButton">&#9986</button>
     </div>
+
     <div id="scoreboard">
-        <p id="playerWins"></p>
+        <p id="playerWins">Player wins: 0</p>
         <p id="result"></p>
-        <p id="computerWins"></p>
+        <p id="computerWins">Computer wins: 0</p>
     </div>
+
+    <div class="popup" id="popup">
+        <img src="./img/check.png">
+        <h2 class="popupResult"></h2>
+        <button type="button" class="closeButton">Play again!</button>
+    </div>
+
     <script src="../rockPaperScissors/script/script.js"></script>
     <script>
         playGame();
