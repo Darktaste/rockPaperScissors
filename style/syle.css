@@ -9,7 +9,7 @@ body {
 
 header,
 footer {
-    background-color: #696969;
+    background-color:  #1a1110;
     text-align: center;
     color: #fff;
 }
@@ -22,7 +22,7 @@ header {
     flex: 1;
     display: flex;
     align-items: center;
-
+    background-color:#8B8989;
 }
 
 .game-choioces {
@@ -33,24 +33,23 @@ header {
     height: 88vh;
     justify-content: center;
     margin: 0;
-    background-color:#ffffff;
     font-size: 35px;
+    padding-left: 0;
 }
 
 #scoreboard {
     flex: 1;
-    height: 88vh;
-    max-width: 300px;
-    background: #3b785f;
+    height: 500PX;;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: 30px;
     color: #fff;
-    background-color: #696969;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    background-color:  #1a1110;
+    border-radius: 20%;
+    margin-left: 200PX;
 }
 
 .playerButton {
@@ -58,8 +57,10 @@ header {
     width: 200px;
     font-size: 100px;
     margin: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
+    background-color: #1a1110;
+    color: #fff;
 }
 
 .buttons {
@@ -79,7 +80,7 @@ header {
 
 .popup {
     width: 400px;
-    background: #fff;
+    background: #CDC9C9;
     border-radius: 6px;
     position: absolute;
     top: 0;
@@ -87,7 +88,7 @@ header {
     transform: translate(-50%, -50%) scale(0.1);
     text-align: center;
     padding: 0 30px 30px;
-    color: #333;
+    color: #1a1110;
     visibility: hidden;
     transition: transform 0.4s, top 0.4s;
 }
@@ -104,7 +105,7 @@ header {
     margin-top: -50px;
     border-radius: 50%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
+    background-color: #CDC9C9;
 }
 
 .popup h2 {
@@ -117,7 +118,7 @@ header {
     width: 100%;
     margin-top: 50px;
     padding: 10px 0;
-    background: #696969;
+    background:  #1a1110;
     color: #fff;
     border: 0;
     outline: none;

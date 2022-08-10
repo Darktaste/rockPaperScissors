@@ -7,6 +7,7 @@ const pWins = document.getElementById('playerWins');
 const cWins = document.getElementById('computerWins');
 const closeButton = document.querySelector('.closeButton');
 const popupResult = popup.querySelector('.popupResult');
+const img = document.querySelector('img');
 const rock = '🪨';
 const paper = '📜';
 const scissors = '✂';
@@ -91,8 +92,10 @@ function openPopup() {
 
     if (playerWinCount === 5) {
         popupResult.textContent = "Congratz! You won the game!";
+        img.src = './img/check.png';
     } else if (compWinCount === 5) {
         popupResult.textContent = "Sorry! You lost the game!"
+        img.src = './img/cross.png';
     }
     restartGame();
 }
